@@ -1,14 +1,16 @@
 var Express = require("express");
 var admin = require("firebase-admin");
-var serviceAccount = require("./firebase/service-account.json");
 var Firebase = require("firebase");
 var morgan = require("morgan");
 var bodyParser = require("body-parser");
+/* // Cuz we're not using firebase on the backend at all
+var serviceAccount = require("./firebase/service-account.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 });
 console.log("connected to service account");
+*/
 const app = Express();
 const port = 3000;
 
@@ -25,4 +27,4 @@ app.get("/monitor", (req, res) => {
 
 
 
-app.listen(port, ()=> console.log("listening on port : " + port));
+app.listen(process.env.PORT || port, ()=> console.log("listening on port : " + port));
