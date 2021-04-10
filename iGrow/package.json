@@ -7,6 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
+  "keywords": [
+    "igrow",
+    "heroku"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -17,9 +21,13 @@
     "express-generator": "^4.16.1",
     "firebase": "^8.3.2",
     "firebase-admin": "^9.6.0",
-    "firebase-tools": "^9.8.0",
+    "firebase-tools": "^9.9.0",
+    "heroku": "^7.52.0",
     "method-override": "^3.0.0",
     "mongodb": "^3.6.5",
     "morgan": "^1.10.0"
+  },
+  "engines": {
+    "node": "14.x"
   }
 }
