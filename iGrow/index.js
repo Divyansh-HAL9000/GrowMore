@@ -12,8 +12,10 @@ console.log("connected to service account");
 const app = Express();
 const port = 3000;
 
+app.use(Express.static("public", {}));
+
 app.get("/", (req, res) => {
-  res.send("welcome home");
+  res.sendFile("public/index.html", {root : __dirname});
 });
 
 
@@ -21,9 +23,6 @@ app.get("/monitor", (req, res) => {
     res.sendFile("monitor.html", {root : __dirname});
 });
 
-app.get("/about", (req, res) => {
-  res.sendFile("axiostest.html", {root : __dirname});
-});
 
 
 app.listen(port, ()=> console.log("listening on port : " + port));
