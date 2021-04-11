@@ -2,7 +2,10 @@ import os
 from time import sleep
 import pyrebase
 from firebase import firebase
+import green_pixels
 
+
+name = "-MY-dWT5DdUmaAbnxL_q"
 config = {
     "apiKey": "AIzaSyBjiVMyfvhmMd8U26RU96UYAyuQUZRamPE",
     "authDomain": "igrow-ac1d6.firebaseapp.com",
@@ -19,6 +22,7 @@ img_dir = "./imgs/"
 firebase = firebase.FirebaseApplication('https://igrow-ac1d6-default-rtdb.firebaseio.com/', None)
 firebase_ = pyrebase.initialize_app(config)
 storage = firebase_.storage()
+firsttime = True
 
 path_on_cloud = "images/"
 
@@ -34,7 +38,11 @@ if __name__ == "__main__":
 
     while True:
         images_new = get_imgs()
-        if images_old != images_new:
+        if images_old != images_new or firsttime:
+            firsttime = False
+            (x, y) = green_pixels.calc_green_pixels(img_dir)
+            for (x, y) in [("img", image[0]), ("x", x), ("y", y)]:
+                result = firebase.put("/igrow-ac1d6-default-rtdb/growth_mon/"+name, x, y)
             print("new images received, uploading")
             for image in images_old:
                 storage.delete(path_on_cloud+image)

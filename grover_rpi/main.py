@@ -47,7 +47,7 @@ if __name__ == "__main__":
     if init:
         payload = grover_tomato.get_values()
         payload["time"] = time.time()
-        print("sernding request : ", payload)
+        print("sending request : ", payload)
         result = firebase.post("/igrow-ac1d6-default-rtdb/Sensor_Value", payload)
         print(result)
         name = result["name"]
