@@ -8,6 +8,7 @@ import serial
 serialPort = serial.Serial(port="/dev/ttyUSB0", baudrate=9600, timeout=1)
 time_to_sleep = 0.5
 
+
 # structure of parameter {"name":{"lower_lim":ll, "upper_lim":ul, "unit":"unt", "rounding_factor":rf]}
 def is_valid(d: dict):
     if len(d.keys()) == 3:
